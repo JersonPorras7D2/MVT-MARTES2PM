@@ -11,6 +11,6 @@ export default class ContactRouter {
 
   readonly routes = (): void => {
     this.router.get('/v1.0/contact', this.contactView.contact)
-    this.router.post('/v1.0/contact', this.contactView.contact)
+    this.router.post('/v1.0/contact', this.contactView.register)
   }
 }

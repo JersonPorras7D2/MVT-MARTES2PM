@@ -7,13 +7,17 @@ import ErrorView from './error/view/ErrorView'
 import ErrorRouter from './error/router/ErrorRouter'
 import ContactRouter from './contact/router/ContactRouter'
 import ContactView from './contact/view/ContactView'
+import FormRouter from './form/router/FormRouter'
+import FormView from './form/view/FormView'
+import FormModel from './form/model/FormModel'
 
 export default class Server {
   private readonly app: Application
 
   constructor(private readonly productRouter: ProductRouter, 
     private readonly errorRouter: ErrorRouter,
-    private readonly contactRouter: ContactRouter) {
+    private readonly contactRouter: ContactRouter,
+    private readonly formRouter: FormRouter) {
     this.app = express()
     this.configure()
     this.static()
@@ -30,9 +34,11 @@ export default class Server {
 
   private readonly routes = (): void => {
     this.app.use('/products', this.productRouter.router)
-    this.app.use('/{*any}', this.errorRouter.router)
     this.app.use('/contact', this.contactRouter.router)
-    }   
+    this.app.use('/form', this.formRouter.router)
+    // Fallback debe ir al final para no interceptar rutas válidas
+    this.app.use('/{*any}', this.errorRouter.router)
+  }   
 
   private readonly static = (): void => {
     this.app.use(express.static(path.join(__dirname, './public')))
@@ -50,5 +56,7 @@ export default class Server {
 const server = new Server(
   new ProductRouter(new ProductView(new ProductModel())),
   new ErrorRouter(new ErrorView()),
-  new ContactRouter(new ContactView()))
+  new ContactRouter(new ContactView()),
+  new FormRouter(new FormView(new FormModel()))
+)
 server.start()

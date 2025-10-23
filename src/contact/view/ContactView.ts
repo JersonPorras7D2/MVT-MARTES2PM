@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 
 export default class ContactView {
   readonly contact = (_req: Request, res: Response) => {
-    res.status(404).render('contact')
+    res.status(200).render('contact')
   }
 
   readonly register = (req: Request, res: Response) => {

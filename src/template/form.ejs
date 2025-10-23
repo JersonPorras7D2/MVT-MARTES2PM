@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario de registro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css">
+  </head>
+
+  <body>
+    <header class="p-2">
+      <h1 class="text-center border border-1 rounded rounded-2 p-3 bg-warning">
+        Formulario de registro
+      </h1>
+    </header>
+
+    <%- include('menu') %>
+
+    <main class="container my-4">
+      <section class="mx-auto form-wrapper p-4 p-md-5 bg-white border rounded-3">
+        <div class="mb-4">
+          <h2 class="h3 mb-1">Formulario de registro</h2>
+          <p class="text-muted mb-0">Complete los datos personales.</p>
+        </div>
+
+        <form class="needs-validation" novalidate>
+          <!-- Nombres -->
+          <div class="mb-3">
+            <label for="firstNames" class="form-label">Nombres</label>
+            <input
+              type="text"
+              id="firstNames"
+              name="firstNames"
+              class="form-control is-invalid"
+              placeholder="Ej. Juan Carlos"
+              minlength="2"
+              required
+            />
+            <div class="invalid-feedback">Ingrese al menos 2 caracteres para los nombres.</div>
+          </div>
+
+          <!-- Apellidos -->
+          <div class="mb-3">
+            <label for="lastNames" class="form-label">Apellidos</label>
+            <input
+              type="text"
+              id="lastNames"
+              name="lastNames"
+              class="form-control is-invalid"
+              placeholder="Ej. Pérez Gómez"
+              minlength="2"
+              required
+            />
+            <div class="invalid-feedback">Ingrese al menos 2 caracteres para los apellidos.</div>
+          </div>
+
+          <!-- Cédula / Documento -->
+          <div class="mb-3">
+            <label for="documentId" class="form-label">Cédula / Documento</label>
+            <input
+              type="text"
+              inputmode="numeric"
+              id="documentId"
+              name="documentId"
+              class="form-control is-invalid"
+              placeholder="Sólo números"
+              pattern="^[0-9]{6,15}$"
+              minlength="6"
+              maxlength="15"
+              required
+            />
+            <div class="form-text">Sólo dígitos, entre 6 y 15 caracteres.</div>
+            <div class="invalid-feedback">Ingrese una cédula válida (solo números).</div>
+          </div>
+
+          <!-- Dirección -->
+          <div class="mb-3">
+            <label for="address" class="form-label">Dirección</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              class="form-control is-invalid"
+              placeholder="Calle, número, colonia"
+              minlength="5"
+              required
+            />
+            <div class="invalid-feedback">Proporcione una dirección válida.</div>
+          </div>
+
+          <!-- Teléfono -->
+          <div class="mb-4">
+            <label for="phone" class="form-label">Teléfono</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="form-control is-invalid"
+              placeholder="Ej. +593 9 1234 567"
+              pattern="^[+]?[- 0-9]{6,20}$"
+              required
+            />
+            <div class="form-text">Puede incluir +, espacios y guiones.</div>
+            <div class="invalid-feedback">Ingrese un teléfono válido.</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg w-100">Registrar</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+

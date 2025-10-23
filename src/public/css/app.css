@@ -1,3 +1,17 @@
 body{
-    background-color: #fac9f4;
+    background-color: #f6f8fb;
 }
+
+.form-wrapper{
+    max-width: 720px;
+}
+
+/* Improve visibility of invalid states to match screenshot */
+.form-control.is-invalid{
+    border-color: #dc3545;
+    box-shadow: 0 0 0 .1rem rgba(220,53,69,.1);
+}
+
+/* Ensure feedback under inputs is visible and compact */
+.invalid-feedback{ display:block; }
+.form-text{ color:#6c757d; }
